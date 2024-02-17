@@ -1,6 +1,5 @@
 package com.example.myfirstapp;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,12 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.List;
+import com.example.myfirstapp.utils.MathUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnMultiply;
     Button btnSplit;
     Button btnCleam;
-
-
-
+    MathUtils mathUtils = new MathUtils();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initUi();
         initListeners();
-
     }
 
     @Override
@@ -56,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
 
 
     private void showHistory() {
@@ -94,14 +87,14 @@ public class MainActivity extends AppCompatActivity {
     private void onSumValues() {
         String value1 = data1.getText().toString();
         String value2 = data2.getText().toString();
-        int sum = sum(Integer.parseInt(value1), Integer.parseInt(value2));
+        int sum = mathUtils.sum(Integer.parseInt(value1), Integer.parseInt(value2));
         showResult(String.valueOf(sum));
     }
 
     private void onResValues() {
         String value1 = data1.getText().toString();
         String value2 = data2.getText().toString();
-        int res = res(Integer.parseInt(value1), Integer.parseInt(value2));
+        int res = mathUtils.res(Integer.parseInt(value1), Integer.parseInt(value2));
         showResult(String.valueOf(res));
 
     }
@@ -109,36 +102,19 @@ public class MainActivity extends AppCompatActivity {
     private void onMultValues() {
         String value1 = data1.getText().toString();
         String value2 = data2.getText().toString();
-        int mul = mult(Integer.parseInt(value1), Integer.parseInt(value2));
+        int mul = mathUtils.mult(Integer.parseInt(value1), Integer.parseInt(value2));
         showResult(String.valueOf(mul));
     }
 
     private void onDivValues() {
         String value1 = data1.getText().toString();
         String value2 = data2.getText().toString();
-        int div = div(Integer.parseInt(value1), Integer.parseInt(value2));
+        int div = mathUtils.div(Integer.parseInt(value1), Integer.parseInt(value2));
         showResult(String.valueOf(div));
     }
 
-
     private void showResult(String textResult) {
         result.setText(textResult);
-    }
-
-    private int sum(int value1, int value2) {
-        return value1 + value2;
-    }
-
-    private int res(int value1, int value2) {
-        return value1 - value2;
-    }
-
-    private int mult(int value1, int value2) {
-        return value1 * value2;
-    }
-
-    private int div(int value1, int value2) {
-        return value1 / value2;
     }
 }
 
