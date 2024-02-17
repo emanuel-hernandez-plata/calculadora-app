@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.myfirstapp.utils.MathUtils;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnSplit;
     Button btnCleam;
     MathUtils mathUtils = new MathUtils();
+    boolean isDarkMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initUi();
         initListeners();
+
+        isDarkMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_overflow, menu);
+        MenuItem temTheme = menu.findItem(R.id.menu_theme);
+        temTheme.setChecked(isDarkMode);
         return true;
     }
 
@@ -43,22 +49,25 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.menu_theme) {
-            switchTheme();
+            switchTheme(item);
         } else if (id == R.id.menu_history) {
-            showHistory();
+            showHistory(item);
         }
         return super.onOptionsItemSelected(item);
 
     }
 
 
-    private void showHistory() {
-
+    private void showHistory(MenuItem item) {
     }
 
 
-    private void switchTheme() {
-
+    private void switchTheme(MenuItem item) {
+        if (isDarkMode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
     }
 
     private void initUi() {

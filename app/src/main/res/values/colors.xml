@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="rose">#7DB0DA</color>
-    <color name="screem">#BFB660</color>
+    <color name="rose">#669ECC</color>
+    <color name="button">#346085</color>
+    <color name="screem">#B0C4DD</color>
+    <color name="dark_screem">#313743</color>
 </resources>
