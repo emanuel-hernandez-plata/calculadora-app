@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D6D095"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="30dp">
+
+        <EditText
+            android:id="@+id/data1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:hint="num1"
+            android:inputType="number"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="0dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_plus" />
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="0dp" />
+
+
+        <EditText
+            android:id="@+id/data2"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:hint="num2"
+            android:inputType="number"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/btnPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/var_plus"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnSubtrac"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/var_subtrac"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnMultiply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/var_multiply"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnSplit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/var_split"
+            android:textSize="20sp" />
+
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="20dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/result"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/Result"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="6000" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="20dp" />
+        <Button
+            android:id="@+id/btnCleam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/var_cleam"
+            android:textSize="20sp"
+
+            />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

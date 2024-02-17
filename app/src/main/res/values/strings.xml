@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyFirstApp</string>
+   <string name="var_num">number1</string>
+    <string name="var_plus">sumar</string>
+    <string name="result">Resultado</string>
+    <string name="var_subtrac">Resta</string>
+    <string name="var_multiply">multiplicar</string>
+    <string name="var_split">dividir</string>
+    <string name="var_cleam">limpiar</string>
+    <string name="theme">Dark Theme</string>
+    <string name="history">history</string>
+
+</resources>
