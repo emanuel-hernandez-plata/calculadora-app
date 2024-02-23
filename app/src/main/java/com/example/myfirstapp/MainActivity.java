@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirstapp.utils.MathUtils;
 
@@ -25,15 +26,22 @@ public class MainActivity extends AppCompatActivity {
     Button btnCleam;
     MathUtils mathUtils = new MathUtils();
     boolean isDarkMode;
+    boolean record;
+    RecyclerView recyclerView = findViewById(R.id.menu_history);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUi();
+        initLinearLayout();
         initListeners();
 
         isDarkMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
+    }
+
+    private void initLinearLayout() {
+
     }
 
     @Override
@@ -41,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_overflow, menu);
         MenuItem temTheme = menu.findItem(R.id.menu_theme);
         temTheme.setChecked(isDarkMode);
+        MenuItem showRecord = menu.findItem(R.id.menu_history);
+
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -54,16 +63,16 @@ public class MainActivity extends AppCompatActivity {
             showHistory(item);
         }
         return super.onOptionsItemSelected(item);
-
     }
 
 
     private void showHistory(MenuItem item) {
+
+
     }
 
-
     private void switchTheme(MenuItem item) {
-        if (isDarkMode){
+        if (isDarkMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
@@ -79,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
         btnSplit = findViewById(R.id.btnSplit);
         btnMultiply = findViewById(R.id.btnMultiply);
         btnCleam = findViewById(R.id.btnCleam);
+        recyclerView = findViewById(R.id.menu_history);
+    }
+
+    private void listAdapter() {
     }
 
     private void initListeners() {
