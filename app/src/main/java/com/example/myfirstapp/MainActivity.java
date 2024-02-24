@@ -15,8 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirstapp.utils.MathUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnCleam;
     MathUtils mathUtils = new MathUtils();
     boolean isDarkMode;
-    ArrayList<String> listRecord = new ArrayList<>();
+    ArrayList<RecordModel> listRecord = new ArrayList<>();
 
 
     @Override
@@ -66,9 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void showHistory() {
         Intent intent = new Intent(this,RecordActivity.class);
-        intent.putStringArrayListExtra("list", listRecord);
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("list", listRecord);
+        intent.putExtra("bundle", bundle);
         startActivity(intent);
-
     }
 
     private void switchTheme(MenuItem item) {
@@ -132,7 +136,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showResult(String textResult) {
-        listRecord.add(textResult);
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+
+        String dataString = dateFormat.format(date);
+        listRecord.add(new RecordModel(textResult,dataString));
         result.setText(textResult);
     }
 }

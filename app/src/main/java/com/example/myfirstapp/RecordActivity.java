@@ -21,21 +21,23 @@ public class RecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
 
-        ArrayList<String> list = getExtraList();
+        ArrayList<RecordModel> list = getExtraList();
         initRecycleView(list);
 
     }
 
-    private ArrayList<String> getExtraList() {
+    private ArrayList<RecordModel> getExtraList() {
         Intent intent = getIntent();
-        if (intent.hasExtra("list")) {
-            ArrayList<String> listRecord = intent.getStringArrayListExtra("list");
-            return listRecord;
+        if (intent.hasExtra("bundle")) {
+            Bundle bundle = intent.getBundleExtra("bundle");
+            if (bundle != null && bundle.containsKey("list")) {
+                return bundle.getParcelableArrayList("list");
+            }
         }
         return new ArrayList<>();
     }
 
-    private void initRecycleView(ArrayList<String> extraList) {
+    private void initRecycleView(ArrayList<RecordModel> extraList) {
         recyclerView = findViewById(R.id.menu_history);
         adapter = new ItemRecordAdapter(extraList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -43,20 +45,5 @@ public class RecordActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private ArrayList<String> getList() {
-        ArrayList<String> list = new ArrayList<>();
-        list.add("holaaa");
-        list.add("perro");
-        list.add("hpptt");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        list.add("soy un ser humano");
-        return list;
-    }
+
 }

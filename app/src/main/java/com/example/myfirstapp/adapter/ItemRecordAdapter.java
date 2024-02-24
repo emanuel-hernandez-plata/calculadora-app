@@ -9,14 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirstapp.R;
+import com.example.myfirstapp.RecordModel;
 
 import java.util.List;
 
 public class ItemRecordAdapter extends RecyclerView.Adapter<ItemRecordAdapter.ItemRecordViewHolder> {
 
-    final private List<String> listRecord;
+    final private List<RecordModel> listRecord;
 
-    public ItemRecordAdapter(List<String> listRecord) {
+    public ItemRecordAdapter(List<RecordModel> listRecord) {
         this.listRecord = listRecord;
     }
 
@@ -38,16 +39,21 @@ public class ItemRecordAdapter extends RecyclerView.Adapter<ItemRecordAdapter.It
     }
 
     public class ItemRecordViewHolder extends RecyclerView.ViewHolder {
+
         TextView textRecord;
+        TextView textDateRecord;
 
         public ItemRecordViewHolder(View itemView) {
             super(itemView);
-            textRecord = itemView.findViewById(R.id.textRecord);
 
+            textRecord = itemView.findViewById(R.id.textRecord);
+            textDateRecord = itemView.findViewById(R.id.textDateRecord);
         }
 
         void bind(int position) {
-            textRecord.setText(listRecord.get(position));
+            RecordModel recordModel = listRecord.get(position);
+            textRecord.setText(recordModel.getRecordValue());
+            textDateRecord.setText(recordModel.getRecordDate());
         }
     }
 }
