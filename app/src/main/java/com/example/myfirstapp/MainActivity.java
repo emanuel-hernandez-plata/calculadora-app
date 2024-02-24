@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfirstapp.utils.MathUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText data1;
@@ -26,22 +30,17 @@ public class MainActivity extends AppCompatActivity {
     Button btnCleam;
     MathUtils mathUtils = new MathUtils();
     boolean isDarkMode;
-    boolean record;
-    RecyclerView recyclerView = findViewById(R.id.menu_history);
+    ArrayList<String> listRecord = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initUi();
-        initLinearLayout();
         initListeners();
 
         isDarkMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
-    }
-
-    private void initLinearLayout() {
-
     }
 
     @Override
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_overflow, menu);
         MenuItem temTheme = menu.findItem(R.id.menu_theme);
         temTheme.setChecked(isDarkMode);
-        MenuItem showRecord = menu.findItem(R.id.menu_history);
 
         return true;
     }
@@ -60,14 +58,16 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.menu_theme) {
             switchTheme(item);
         } else if (id == R.id.menu_history) {
-            showHistory(item);
+            showHistory();
         }
         return super.onOptionsItemSelected(item);
     }
 
 
-    private void showHistory(MenuItem item) {
-
+    private void showHistory() {
+        Intent intent = new Intent(this,RecordActivity.class);
+        intent.putStringArrayListExtra("list", listRecord);
+        startActivity(intent);
 
     }
 
@@ -88,13 +88,9 @@ public class MainActivity extends AppCompatActivity {
         btnSplit = findViewById(R.id.btnSplit);
         btnMultiply = findViewById(R.id.btnMultiply);
         btnCleam = findViewById(R.id.btnCleam);
-        recyclerView = findViewById(R.id.menu_history);
     }
 
-    private void listAdapter() {
-    }
-
-    private void initListeners() {
+       private void initListeners() {
         btnPlus.setOnClickListener(v -> onSumValues());
         btnSubtrac.setOnClickListener(v -> onResValues());
         btnMultiply.setOnClickListener(v -> onMultValues());
@@ -136,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showResult(String textResult) {
+        listRecord.add(textResult);
         result.setText(textResult);
     }
 }

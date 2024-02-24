@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.myfirstapp.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +8,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myfirstapp.R;
+
 import java.util.List;
 
 public class ItemRecordAdapter extends RecyclerView.Adapter<ItemRecordAdapter.ItemRecordViewHolder> {
+
     final private List<String> listRecord;
 
     public ItemRecordAdapter(List<String> listRecord) {
